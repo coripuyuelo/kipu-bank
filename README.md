@@ -80,8 +80,6 @@ El contrato aplica buenas prácticas de seguridad, errores personalizados y emis
 | Monto cero | Depositar o retirar 0 | Revert `KipuBank__ZeroAmount()` |
 | BankCap acumulado con varios usuarios | Depósitos combinados alcanzando `bankCap` | Reverts al superar `bankCap` |
 
-> Para todos los escenarios detallados, consulte [TEST_CASES.md](./TEST_CASES.md)
-
 ---
 
 ## Seguridad y optimización
