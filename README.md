@@ -62,9 +62,39 @@ El contrato aplica buenas prácticas de seguridad, errores personalizados y emis
 ## Uso principal
 
 - **Depositar ETH**: llamar `deposit()` con valor en ETH.  
-- **Retirar ETH**: llamar `withdraw(uint256 _amount)` en wei.  
+- **Retirar ETH**: llamar `withdraw(uint256 _amount)` en wei.
+
+## Uso secundario
 - **Consultar saldo**: llamar `getBalance(address)`.
 
+---
+
+## Deploy del Contrato
+
+- Red: Sepolia Testnet
+- Dirección del Contrato: 0x1A1688d1b1E323f7c8767b91A6616d4a6F747627
+- Contrato: [Ver en Etherscan](https://sepolia.etherscan.io/address/0x1a1688d1b1e323f7c8767b91a6616d4a6f747627#code)  
+- bankCap: 100 ETH
+- withdrawalLimit: 1 ETH
+
+---
+
+## Seguridad y optimización
+
+- Variables `immutable` para menor consumo de gas.  
+- Errores personalizados en lugar de strings largos.  
+- Patrón checks-effects-interactions.  
+- Modificador `nonZero` para evitar operaciones con monto 0.  
+- Incrementos con `unchecked` donde es seguro.  
+- Transferencias seguras usando `call{value: ...}`.  
+
+---
+
+## Autor
+Corina Puyuelo
+
+---
+---
 ---
 
 ## Casos de uso resumidos
@@ -80,13 +110,3 @@ El contrato aplica buenas prácticas de seguridad, errores personalizados y emis
 | Monto cero | Depositar o retirar 0 | Revert `KipuBank__ZeroAmount()` |
 | BankCap acumulado con varios usuarios | Depósitos combinados alcanzando `bankCap` | Reverts al superar `bankCap` |
 
----
-
-## Seguridad y optimización
-
-- Variables `immutable` para menor consumo de gas.  
-- Errores personalizados en lugar de strings largos.  
-- Patrón checks-effects-interactions.  
-- Modificador `nonZero` para evitar operaciones con monto 0.  
-- Incrementos con `unchecked` donde es seguro.  
-- Transferencias seguras usando `call{value: ...}`.  
